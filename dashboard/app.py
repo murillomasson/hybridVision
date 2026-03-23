@@ -13,7 +13,7 @@ import yaml
 st.set_page_config(
     page_title="HybridVision Dashboard",
     page_icon="🧠",
-    layout="wide"
+    layout="centered"
 )
 
 
@@ -100,7 +100,7 @@ def render_system_overview(svg_path="docs/system_overview.svg"):
             font-size: 0.90rem;
             color: #9ca3af;
             line-height: 1.5;
-            max-width: 900px;
+            max-width: 100%;
         ">
             High-level overview of the experimental multimodal segmentation framework, 
             including preprocessing, region generation, representation extraction, clustering, 
@@ -120,7 +120,7 @@ def render_system_overview(svg_path="docs/system_overview.svg"):
         ">
             <div style="
                 width:100%;
-                max-width:1400px;
+                max-width:100%;
             ">
                 {svg_content}
             </div>
@@ -140,30 +140,7 @@ def load_svg(svg_file_path: str):
             return f.read()
     except FileNotFoundError:
         return None
-
-def render_architecture_header():
-    st.markdown("""
-    <div style="margin-bottom: 1.2rem;">
-        <div style="
-            font-size: 2.6rem;
-            font-weight: 800;
-            color: #f9fafb;
-            letter-spacing: -0.03em;
-            margin-bottom: 0.35rem;
-        ">
-            🏛️ Framework Architecture
-        </div>
-        <div style="
-            font-size: 1rem;
-            color: #cbd5e1;
-            line-height: 1.65;
-            max-width: 980px;
-        ">
-            This page combines a high-level system diagram with an interactive architecture graph, 
-            providing both a conceptual and implementation-level view of the HybridVision framework.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    
 
 def find_experiments(base_dir='experiments'):
     experiment_map = {}
@@ -313,19 +290,51 @@ st.markdown("""
 
 app_mode = st.sidebar.selectbox(
     "Select View",
-    ["🏛️ Architecture", "📖 Experiment Log", "🧪 Qualitative Single-Image Experiments", "📈 Hyperparameter Optimization Experiments"]
+    [ "🏠 Framework Overview", "🏛️ Architecture", "📖 Experiment Log", "🧪 Qualitative Single-Image Experiments", "📈 Hyperparameter Optimization Experiments"]
 )
 
-if app_mode == "🏛️ Architecture":
-    render_architecture_header()
-    render_system_overview("docs/system_overview.svg")
+if app_mode == "🏠 Framework Overview":
 
+    st.title("HybridVision")
+    st.markdown("""
+        ### A modular framework for multimodal image segmentation
+
+        HybridVision combines semantic and structural deep representations with
+        unsupervised clustering and validation strategies for experimental segmentation analysis.
+        """)
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.info("**Region Generation**: SAM-based proposal masks for candidate segments")
+        st.info("**Feature Extraction**: DINOv2 and ResNet representations")
+    with col2:
+        st.info("**Clustering**: pectral and K-means based grouping strategies")
+        st.info("**Validation**: CLIP labeling and multi-view consistency analysis")
+
+    st.markdown("""
+        This dashboard provides an interactive overview of the framework, its architecture,
+        and the experimental results used to analyze its behavior.
+        """)
+
+    render_system_overview()
+
+if app_mode == "🏛️ Architecture":
+    st.title("🏛️ Framework Architecture")
+    st.markdown("""
+        This section presents the structural organization of the HybridVision framework,
+        including both a high-level system overview and an implementation-level dependency graph.
+
+        It is intended to show how the main modules, classes, and functions relate to each other
+        across the segmentation, feature extraction, clustering, labeling, and validation stages.
+        """)
+    render_system_overview("docs/system_overview.svg")
+    
     st.markdown("<hr style='margin: 1.8rem 0 1.2rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.08);'>", unsafe_allow_html=True)
 
     st.markdown("""
         <div style="
         width: 100%;
-        max-width: 980px;
+        max-width: 100%;
         display:flex;
         justify-content:center;
     ">
@@ -334,22 +343,8 @@ if app_mode == "🏛️ Architecture":
     """, unsafe_allow_html=True)
     
     st.markdown("""
-    <div style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
-        <div style="
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #f3f4f6;
-            margin-bottom: 0.35rem;
-            letter-spacing: 0.02em;
-        ">
-            Code Dependency Graph
-        </div>
-        <div style="
-            font-size: 0.90rem;
-            color: #9ca3af;
-            line-height: 1.5;
-            max-width: 900px;
-        ">
+    **Code Dependency Graph**
+        <div>
         This is an interactive, auto-generated diagram of the project's architecture.
     </div>
     """, unsafe_allow_html=True)
@@ -357,9 +352,7 @@ if app_mode == "🏛️ Architecture":
 
     legend_html = """
         <div style="
-        position: absolute;
-        right: -34px;
-        top: 110px;
+        margin-top: 12px;
         z-index: 1000;
         background-color: rgba(12,15,20,0.84);
         backdrop-filter: blur(6px);
@@ -408,7 +401,6 @@ if app_mode == "🏛️ Architecture":
         <div class="legend-item"><div class="legend-line" style="border-top:2px dashed #e5e7eb;"></div>Contains</div>
         </div>
     """    
-    st.markdown(legend_html, unsafe_allow_html=True)
     
     architecture_data = load_json_data('docs/architecture_data.json')
     if architecture_data and 'nodes' in architecture_data and 'edges' in architecture_data:
@@ -445,7 +437,7 @@ if app_mode == "🏛️ Architecture":
 
         config = Config(
             width='100%',
-            height=700,
+            height=500,
             directed=True,
             physics=True,
             hierarchical=False,
@@ -459,11 +451,20 @@ if app_mode == "🏛️ Architecture":
             }
         )
         agraph(nodes=agraph_nodes, edges=agraph_edges, config=config)
+        st.markdown(legend_html, unsafe_allow_html=True)
+
     else:
         st.warning("Architecture data (`docs/architecture_data.json`) not found. Please run 'python -m scripts/generate_architecture' to create it.")
 
 if app_mode == "📈 Hyperparameter Optimization Experiments":
     st.title("📈 Hyperparameter Optimization Experiments")
+    st.markdown("""
+        This section explores the hyperparameter optimization experiments conducted for the framework,
+        highlighting how different parameter choices affect segmentation and validation performance.
+
+        It includes performance-driven filtering, parameter-to-metric analysis,
+        correlation inspection, and access to the raw experimental data.
+        """)
     st.sidebar.markdown("---")
     st.sidebar.subheader("Experiment Controls")
     
@@ -576,11 +577,24 @@ if app_mode == "📈 Hyperparameter Optimization Experiments":
 
 elif app_mode == "📖 Experiment Log":
     st.title("📖 Experiment Log")
+    st.markdown("""
+        This section documents the experimental trajectory of the project,
+        including decisions, adjustments, intermediate findings, and implementation notes.
+
+        It serves as a running record of how the framework evolved throughout development and testing.
+        """)
     log_content = load_markdown('experiments/index.md')
     st.markdown(log_content, unsafe_allow_html=True)
 
 elif app_mode == "🧪 Qualitative Single-Image Experiments":
     st.title("🧪 Qualitative Single-Image Experiments")
+    st.markdown("""
+        This section presents qualitative results from single-image experiments,
+        allowing visual inspection of segmentation behavior under different configurations.
+
+        It includes final outputs, optimization plots, validation diagnostics,
+        and intermediate cluster visualizations for individual runs.
+        """)
 
     ci_runs = find_ci_experiments()
     if not ci_runs:

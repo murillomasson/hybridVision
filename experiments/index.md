@@ -1,4 +1,4 @@
-# Experiment Index
+## Experiment Index
 
 This document summarizes the experimental runs performed during the development and tuning of the segmentation framework.  
 Each experiment corresponds to a specific configuration of the pipeline and records the scope of changes, execution conditions, and the main observations obtained from the run.
