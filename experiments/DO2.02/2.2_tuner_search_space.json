@@ -1,0 +1,64 @@
+{
+  "run_dino_pipeline": {"type": "categorical", "choices": [false]},
+  "run_resnet_pipeline": {"type": "categorical", "choices": [false]},
+  "run_fusion_pipeline": {"type": "categorical", "choices": [true]},
+
+  "extractors.resnet.model_name": {"type": "categorical", "choices": ["resnet50"]},
+  "extractors.resnet.layer_name": {"type": "categorical", "choices": ["conv1", "layer2"]},
+  "extractors.dino_v2.model_name": {"type": "categorical", "choices": ["dinov2_vitb14"]},
+  "extractors.dino_v2.layer_name": {"type": "categorical", "choices": ["blocks.7", "blocks.11"]},
+  "extractors.clip.model_name": {"type": "categorical", "choices": ["ViT-B/32"]},
+  "extractors.clip.layer_name": {"type": "categorical", "choices": ["transformer.resblocks.11"]},
+
+  "heuristic_settings.sam_model": {"type": "categorical", "choices": ["facebook/sam2-hiera-large"]},
+  "heuristic_settings.generator_params.points_per_side": {"type": "categorical", "choices": [8, 16]},
+  "heuristic_settings.generator_params.pred_iou_thresh": {"type": "categorical", "choices": [0.85, 0.88, 0.9, 0.93, 0.95]},
+  "heuristic_settings.generator_params.stability_score_thresh": {"type": "categorical", "choices": [0.92, 0.94, 0.95, 0.97]},
+  "heuristic_settings.generator_params.min_mask_region_area": {"type": "categorical", "choices": [50, 100]},
+
+  "heuristic_settings.filter_params.filter_min_area_perc": {"type": "categorical", "choices": [0.002, 0.004, 0.006, 0.008]},
+  "heuristic_settings.filter_params.use_nms": {"type": "categorical", "choices": [true]},
+  "heuristic_settings.filter_params.nms_iou_threshold": {"type": "categorical", "choices": [0.65, 0.7, 0.75, 0.8]},
+
+  "heuristic_settings.k_heuristic_formulas.structural_multiplier": {"type": "categorical", "choices": [1.8, 2.0, 2.2, 2.4, 2.6]},
+  "heuristic_settings.k_heuristic_formulas.semantic_base": {"type": "categorical", "choices": [2, 3]},
+  "heuristic_settings.k_heuristic_formulas.semantic_scale_factor": {"type": "categorical", "choices": [0.6, 0.75, 0.9, 1.0]},
+  "heuristic_settings.k_heuristic_formulas.max_k": {"type": "categorical", "choices": [15, 18, 20, 25]},
+
+  "resnet_pipeline.image_preprocessing.use_clahe": {"type": "categorical", "choices": [false]},
+  "resnet_pipeline.image_preprocessing.use_gaussian_blur": {"type": "categorical", "choices": [true, false]},
+  "resnet_pipeline.image_preprocessing.blur_kernel_size": {"type": "categorical", "choices": [3, 5]},
+  "resnet_pipeline.image_preprocessing.use_sobel_edges": {"type": "categorical", "choices": [false]},
+
+  "resnet_pipeline.clustering.k_selection.method": {"type": "categorical", "choices": ["heuristic"]},
+  "resnet_pipeline.clustering.feature_processing.run_normalization": {"type": "categorical", "choices": [true]},
+  "resnet_pipeline.clustering.feature_processing.run_reduction": {"type": "categorical", "choices": [true]},
+  "resnet_pipeline.clustering.feature_processing.reducer.method": {"type": "categorical", "choices": ["pca"]},
+  "resnet_pipeline.clustering.feature_processing.reducer.n_components": {"type": "categorical", "choices": [16, 24, 32, 40, 48]},
+  "resnet_pipeline.clustering.feature_processing.normalizer.method": {"type": "categorical", "choices": ["l2", "root-norm"]},
+  "resnet_pipeline.clustering.clusterer.method": {"type": "categorical", "choices": ["kmeans"]},
+
+  "dino_pipeline.clustering.k_selection.method": {"type": "categorical", "choices": ["heuristic"]},
+  "dino_pipeline.clustering.feature_processing.run_normalization": {"type": "categorical", "choices": [true]},
+  "dino_pipeline.clustering.feature_processing.run_reduction": {"type": "categorical", "choices": [true]},
+  "dino_pipeline.clustering.feature_processing.reducer.method": {"type": "categorical", "choices": ["pca"]},
+  "dino_pipeline.clustering.feature_processing.reducer.n_components": {"type": "categorical", "choices": [16, 24, 32, 40, 48]},
+  "dino_pipeline.clustering.feature_processing.normalizer.method": {"type": "categorical", "choices": ["l2", "root-norm"]},
+  "dino_pipeline.clustering.clusterer.method": {"type": "categorical", "choices": ["kmeans"]},
+
+  "fusion_pipeline.clustering.k_selection.k_source": {"type": "categorical", "choices": ["semantic", "structural"]},
+  "fusion_pipeline.clustering.clusterer.method": {"type": "categorical", "choices": ["graph"]},
+  "fusion_pipeline.clustering.clusterer.n_neighbors": {"type": "categorical", "choices": [8, 12, 16, 20, 25]},
+
+  "labeler.aggregation_method": {"type": "categorical", "choices": ["top_k_mean"]},
+  "labeler.aggregation_top_k_perc": {"type": "categorical", "choices": [0.15, 0.25, 0.35, 0.45]},
+  "labeler.top_n_labels": {"type": "categorical", "choices": [3, 5]},
+
+  "validator_settings.final_threshold": {"type": "categorical", "choices": [0.5, 0.55, 0.6, 0.65, 0.7]},
+  "validator_settings.semantic_threshold": {"type": "categorical", "choices": [0.5, 0.55, 0.6, 0.65, 0.7]},
+  "validator_settings.structural_threshold": {"type": "categorical", "choices": [0.5, 0.55, 0.6, 0.65, 0.7]},
+
+  "validator_settings.weights.dino_iou": {"type": "categorical", "choices": [0.3, 0.5, 0.7]},
+  "validator_settings.weights.clip_confidence": {"type": "categorical", "choices": [0.1, 0.3, 0.5]},
+  "validator_settings.weights.resnet_iou": {"type": "categorical", "choices": [0.2, 0.35, 0.5]}
+}

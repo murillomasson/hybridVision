@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+output/
+experiments_local/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+output/
+experiments_local/
+
+experiments/**/features_cache/
+experiments/**/k_estimator_cache/
+*.db

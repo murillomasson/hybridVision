@@ -1,0 +1,124 @@
+output_dir: ./drive/MyDrive/hybridvision/output
+image_dir: ./drive/MyDrive/hybridvision/datasets/images
+device: cuda
+run_dino_pipeline: true
+run_resnet_pipeline: true
+run_fusion_pipeline: true
+generate_plots: true
+plotting_settings:
+  generate_per_image_plots: true
+  max_images_to_plot: 10
+extractors:
+  resnet:
+    model_name: resnet50
+    layer_name: layer3
+  dino_v2:
+    model_name: dinov2_vitb14
+    layer_name: blocks.11
+  clip:
+    model_name: ViT-B/32
+    layer_name: transformer.resblocks.11
+heuristic_settings:
+  sam_model: facebook/sam2-hiera-large
+  generator_params:
+    points_per_side: 8
+    pred_iou_thresh: 0.966347777159921
+    stability_score_thresh: 0.9665608877603562
+    min_mask_region_area: 200
+  filter_params:
+    filter_min_area_perc: 0.007430582629721761
+    use_nms: false
+    nms_iou_threshold: 0.7274989471334391
+  k_heuristic_formulas:
+    structural_multiplier: 2.524958558335176
+    semantic_base: 4
+    semantic_scale_factor: 0.5202224531145824
+    max_k: 22
+resnet_pipeline:
+  image_preprocessing:
+    use_clahe: false
+    clahe_clip_limit: 3.140513278275465
+    clahe_tile_grid_size:
+    - 8
+    - 8
+    use_grayscale: false
+    use_gaussian_blur: true
+    blur_kernel_size: 3
+    use_sobel_edges: false
+    sobel_kernel_size: 3
+  clustering:
+    k_selection:
+      method: silhouette
+      k_range:
+      - 3
+      - 15
+    feature_processing:
+      run_normalization: true
+      run_reduction: true
+      reducer:
+        method: umap
+        n_components: 63
+      normalizer:
+        method: z-score
+    clusterer:
+      method: kmeans
+      n_neighbors: 40
+dino_pipeline:
+  clustering:
+    run_clip_labeling: true
+    k_selection:
+      method: silhouette
+      k_range:
+      - 2
+      - 8
+    feature_processing:
+      run_normalization: true
+      run_reduction: false
+      reducer:
+        method: svd
+        n_components: 51
+      normalizer:
+        method: z-score
+    clusterer:
+      method: graph
+      n_neighbors: 16
+fusion_pipeline:
+  clustering:
+    run_clip_labeling: true
+    k_selection:
+      method: heuristic
+      k_source: structural
+      k_range:
+      - 2
+      - 15
+    feature_processing:
+      run_normalization: true
+      run_reduction: false
+      reducer:
+        method: pca
+        n_components: 40
+      normalizer:
+        method: l2
+    clusterer:
+      method: kmeans
+      n_neighbors: 40
+labeler:
+  words_json_path: ./drive/MyDrive/hybridvision/datasets/words.json
+  aggregation_method: mean
+  aggregation_top_k_perc: 0.13743068161389524
+  top_n_labels: 5
+  prompt_template:
+  - a photo of a {}
+  - a picture of a {}
+  - a close-up of a {}
+  - a {} in the scene
+  - an image of a {}
+  - '{}'
+validator_settings:
+  final_threshold: 0.6931307125438411
+  semantic_threshold: 0.6507223379406845
+  structural_threshold: 0.6399268460342241
+  weights:
+    dino_iou: 0.6197936839028574
+    clip_confidence: 0.16072525951402583
+    resnet_iou: 0.7952149524781346

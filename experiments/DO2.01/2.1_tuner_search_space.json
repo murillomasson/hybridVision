@@ -1,0 +1,349 @@
+{
+  "run_dino_pipeline": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "run_resnet_pipeline": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "run_fusion_pipeline": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "extractors.resnet.model_name": {
+    "type": "categorical",
+    "choices": [
+      "resnet50"
+    ]
+  },
+  "extractors.resnet.layer_name": {
+    "type": "categorical",
+    "choices": [
+      "conv1",
+      "layer1",
+      "layer2",
+      "layer3",
+      "layer4"
+    ]
+  },
+  "extractors.dino_v2.model_name": {
+    "type": "categorical",
+    "choices": [
+      "dinov2_vitb14"
+    ]
+  },
+  "extractors.dino_v2.layer_name": {
+    "type": "categorical",
+    "choices": [
+      "blocks.4",
+      "blocks.7",
+      "blocks.11"
+    ]
+  },
+  "extractors.clip.model_name": {
+    "type": "categorical",
+    "choices": [
+      "ViT-B/32"
+    ]
+  },
+  "extractors.clip.layer_name": {
+    "type": "categorical",
+    "choices": [
+      "transformer.resblocks.9",
+      "transformer.resblocks.10",
+      "transformer.resblocks.11"
+    ]
+  },
+  "heuristic_settings.sam_model": {
+    "type": "categorical",
+    "choices": [
+      "facebook/sam2-hiera-large"
+    ]
+  },
+  "heuristic_settings.generator_params.points_per_side": {
+    "type": "categorical",
+    "choices": [
+      8,
+      16,
+      32
+    ]
+  },
+  "heuristic_settings.generator_params.pred_iou_thresh": {
+    "type": "float",
+    "low": 0.80,
+    "high": 0.98
+  },
+  "heuristic_settings.generator_params.stability_score_thresh": {
+    "type": "float",
+    "low": 0.90,
+    "high": 0.98
+  },
+  "heuristic_settings.generator_params.min_mask_region_area": {
+    "type": "categorical",
+    "choices": [
+      50,
+      100,
+      200
+    ]
+  },
+  "heuristic_settings.filter_params.filter_min_area_perc": {
+    "type": "float",
+    "low": 0.001,
+    "high": 0.01
+  },
+  "heuristic_settings.filter_params.use_nms": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "heuristic_settings.filter_params.nms_iou_threshold": {
+    "type": "float",
+    "low": 0.6,
+    "high": 0.85
+  },
+  "heuristic_settings.k_heuristic_formulas.structural_multiplier": {
+    "type": "float",
+    "low": 1.5,
+    "high": 3.0
+  },
+  "heuristic_settings.k_heuristic_formulas.semantic_base": {
+    "type": "int",
+    "low": 2,
+    "high": 4
+  },
+  "heuristic_settings.k_heuristic_formulas.semantic_scale_factor": {
+    "type": "float",
+    "low": 0.5,
+    "high": 1.2
+  },
+  "heuristic_settings.k_heuristic_formulas.max_k": {
+    "type": "int",
+    "low": 15,
+    "high": 30
+  },
+  "resnet_pipeline.image_preprocessing.use_clahe": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "resnet_pipeline.image_preprocessing.clahe_clip_limit": {
+    "type": "float",
+    "low": 1.0,
+    "high": 5.0
+  },
+  "resnet_pipeline.image_preprocessing.use_grayscale": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "resnet_pipeline.image_preprocessing.use_gaussian_blur": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "resnet_pipeline.image_preprocessing.blur_kernel_size": {
+    "type": "categorical",
+    "choices": [
+      3,
+      5,
+      7
+    ]
+  },
+  "resnet_pipeline.image_preprocessing.use_sobel_edges": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "resnet_pipeline.image_preprocessing.sobel_kernel_size": {
+    "type": "categorical",
+    "choices": [
+      3,
+      5
+    ]
+  },
+  "resnet_pipeline.clustering.k_selection.method": {
+    "type": "categorical",
+    "choices": [
+      "heuristic",
+      "silhouette"
+    ]
+  },
+  "dino_pipeline.clustering.k_selection.method": {
+    "type": "categorical",
+    "choices": [
+      "heuristic",
+      "silhouette"
+    ]
+  },
+  "resnet_pipeline.clustering.feature_processing.run_normalization": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "dino_pipeline.clustering.feature_processing.run_normalization": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "resnet_pipeline.clustering.feature_processing.run_reduction": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "dino_pipeline.clustering.feature_processing.run_reduction": {
+    "type": "categorical",
+    "choices": [
+      true,
+      false
+    ]
+  },
+  "resnet_pipeline.clustering.feature_processing.reducer.method": {
+    "type": "categorical",
+    "choices": [
+      "pca",
+      "umap",
+      "svd"
+    ]
+  },
+  "dino_pipeline.clustering.feature_processing.reducer.method": {
+    "type": "categorical",
+    "choices": [
+      "pca",
+      "umap",
+      "svd"
+    ]
+  },
+  "resnet_pipeline.clustering.feature_processing.reducer.n_components": {
+    "type": "int",
+    "low": 16,
+    "high": 64
+  },
+  "dino_pipeline.clustering.feature_processing.reducer.n_components": {
+    "type": "int",
+    "low": 16,
+    "high": 64
+  },
+  "resnet_pipeline.clustering.feature_processing.normalizer.method": {
+    "type": "categorical",
+    "choices": [
+      "l2",
+      "z-score",
+      "root-norm"
+    ]
+  },
+  "dino_pipeline.clustering.feature_processing.normalizer.method": {
+    "type": "categorical",
+    "choices": [
+      "l2",
+      "z-score",
+      "root-norm"
+    ]
+  },
+  "resnet_pipeline.clustering.clusterer.method": {
+    "type": "categorical",
+    "choices": [
+      "kmeans",
+      "graph"
+    ]
+  },
+  "dino_pipeline.clustering.clusterer.method": {
+    "type": "categorical",
+    "choices": [
+      "kmeans",
+      "graph"
+    ]
+  },
+  "resnet_pipeline.clustering.clusterer.n_neighbors": {
+    "type": "int",
+    "low": 10,
+    "high": 40
+  },
+  "dino_pipeline.clustering.clusterer.n_neighbors": {
+    "type": "int",
+    "low": 10,
+    "high": 40
+  },
+  "fusion_pipeline.clustering.k_selection.k_source": {
+    "type": "categorical",
+    "choices": [
+      "semantic",
+      "structural"
+    ]
+  },
+  "labeler.aggregation_method": {
+    "type": "categorical",
+    "choices": [
+      "mean",
+      "median",
+      "top_k_mean"
+    ]
+  },
+  "labeler.aggregation_top_k_perc": {
+    "type": "float",
+    "low": 0.1,
+    "high": 0.5
+  },
+  "labeler.top_n_labels": {
+    "type": "categorical",
+    "choices": [
+      3,
+      5
+    ]
+  },
+  "validator_settings.final_threshold": {
+    "type": "float",
+    "low": 0.5,
+    "high": 0.8
+  },
+  "validator_settings.semantic_threshold": {
+    "type": "float",
+    "low": 0.4,
+    "high": 0.75
+  },
+  "validator_settings.structural_threshold": {
+    "type": "float",
+    "low": 0.4,
+    "high": 0.75
+  },
+  "validator_settings.weights.dino_iou": {
+    "type": "float",
+    "low": 0.0,
+    "high": 1.0
+  },
+  "validator_settings.weights.clip_confidence": {
+    "type": "float",
+    "low": 0.0,
+    "high": 1.0
+  },
+  "validator_settings.weights.resnet_iou": {
+    "type": "float",
+    "low": 0.0,
+    "high": 1.0
+  }
+}

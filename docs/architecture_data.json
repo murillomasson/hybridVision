@@ -1,0 +1,1293 @@
+{
+  "nodes": [
+    {
+      "id": "PerformanceAnalyzer",
+      "label": "PerformanceAnalyzer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\analyzers\\performance_analyzer.py"
+    },
+    {
+      "id": "PerformanceAnalyzer::_calculate_iou",
+      "label": "_calculate_iou()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of PerformanceAnalyzer"
+    },
+    {
+      "id": "PerformanceAnalyzer::_find_best_gt_match",
+      "label": "_find_best_gt_match()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of PerformanceAnalyzer"
+    },
+    {
+      "id": "PerformanceAnalyzer::run_evaluation",
+      "label": "run_evaluation()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of PerformanceAnalyzer"
+    },
+    {
+      "id": "PerformanceAnalyzer::get_summary",
+      "label": "get_summary()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of PerformanceAnalyzer"
+    },
+    {
+      "id": "TuningAnalyzer",
+      "label": "TuningAnalyzer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\analyzers\\tuning_analyzer.py"
+    },
+    {
+      "id": "TuningAnalyzer::_calculate_segment_penalty",
+      "label": "_calculate_segment_penalty()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of TuningAnalyzer"
+    },
+    {
+      "id": "TuningAnalyzer::calculate_all_metrics",
+      "label": "calculate_all_metrics()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of TuningAnalyzer"
+    },
+    {
+      "id": "BaseClusterer",
+      "label": "BaseClusterer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\clusterers\\base_clusterer.py"
+    },
+    {
+      "id": "BaseClusterer::fit_predict",
+      "label": "fit_predict()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of BaseClusterer"
+    },
+    {
+      "id": "GraphClusterer",
+      "label": "GraphClusterer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\clusterers\\graph_clusterer.py"
+    },
+    {
+      "id": "GraphClusterer::_calculate_dynamic_neighbors",
+      "label": "_calculate_dynamic_neighbors()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of GraphClusterer"
+    },
+    {
+      "id": "GraphClusterer::fit_predict",
+      "label": "fit_predict()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of GraphClusterer"
+    },
+    {
+      "id": "KMeansClusterer",
+      "label": "KMeansClusterer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\clusterers\\kmeans_clusterer.py"
+    },
+    {
+      "id": "KMeansClusterer::fit_predict",
+      "label": "fit_predict()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of KMeansClusterer"
+    },
+    {
+      "id": "SpectralClusterer",
+      "label": "SpectralClusterer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\clusterers\\spectral_clusterer.py"
+    },
+    {
+      "id": "SpectralClusterer::fit_predict",
+      "label": "fit_predict()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of SpectralClusterer"
+    },
+    {
+      "id": "ClusterCountEstimator",
+      "label": "ClusterCountEstimator",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\estimators\\cluster_count_estimator.py"
+    },
+    {
+      "id": "ClusterCountEstimator::_calculate_iou",
+      "label": "_calculate_iou()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ClusterCountEstimator"
+    },
+    {
+      "id": "ClusterCountEstimator::_apply_nms",
+      "label": "_apply_nms()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ClusterCountEstimator"
+    },
+    {
+      "id": "ClusterCountEstimator::_filter_and_process_masks",
+      "label": "_filter_and_process_masks()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ClusterCountEstimator"
+    },
+    {
+      "id": "ClusterCountEstimator::estimate_k_with_heuristics",
+      "label": "estimate_k_with_heuristics()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of ClusterCountEstimator"
+    },
+    {
+      "id": "BaseExtractor",
+      "label": "BaseExtractor",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\extractors\\base_extractor.py"
+    },
+    {
+      "id": "BaseExtractor::_load_images_and_prepare_batch",
+      "label": "_load_images_and_prepare_batch()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of BaseExtractor"
+    },
+    {
+      "id": "BaseExtractor::extract",
+      "label": "extract()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of BaseExtractor"
+    },
+    {
+      "id": "CLIPExtractor",
+      "label": "CLIPExtractor",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\extractors\\clip_extractor.py"
+    },
+    {
+      "id": "CLIPExtractor::_load_model",
+      "label": "_load_model()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of CLIPExtractor"
+    },
+    {
+      "id": "CLIPExtractor::_get_target_module",
+      "label": "_get_target_module()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of CLIPExtractor"
+    },
+    {
+      "id": "CLIPExtractor::_hook_fn",
+      "label": "_hook_fn()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of CLIPExtractor"
+    },
+    {
+      "id": "CLIPExtractor::_register_hook",
+      "label": "_register_hook()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of CLIPExtractor"
+    },
+    {
+      "id": "CLIPExtractor::extract",
+      "label": "extract()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of CLIPExtractor"
+    },
+    {
+      "id": "CLIPExtractor::_load_images_as_pil",
+      "label": "_load_images_as_pil()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of CLIPExtractor"
+    },
+    {
+      "id": "DINOv2Extractor",
+      "label": "DINOv2Extractor",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\extractors\\dino_v2_extractor.py"
+    },
+    {
+      "id": "DINOv2Extractor::_get_features_hook",
+      "label": "_get_features_hook()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of DINOv2Extractor"
+    },
+    {
+      "id": "DINOv2Extractor::_register_hook",
+      "label": "_register_hook()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of DINOv2Extractor"
+    },
+    {
+      "id": "DINOv2Extractor::extract",
+      "label": "extract()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of DINOv2Extractor"
+    },
+    {
+      "id": "ResNetExtractor",
+      "label": "ResNetExtractor",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\extractors\\resnet_extractor.py"
+    },
+    {
+      "id": "ResNetExtractor::_load_model",
+      "label": "_load_model()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ResNetExtractor"
+    },
+    {
+      "id": "ResNetExtractor::_get_target_module",
+      "label": "_get_target_module()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ResNetExtractor"
+    },
+    {
+      "id": "ResNetExtractor::_register_hook",
+      "label": "_register_hook()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ResNetExtractor"
+    },
+    {
+      "id": "ResNetExtractor::extract",
+      "label": "extract()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of ResNetExtractor"
+    },
+    {
+      "id": "ClipLabeler",
+      "label": "ClipLabeler",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\labelers\\clip_labeler.py"
+    },
+    {
+      "id": "ClipLabeler::_load_and_encode_words",
+      "label": "_load_and_encode_words()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ClipLabeler"
+    },
+    {
+      "id": "ClipLabeler::_aggregate_features",
+      "label": "_aggregate_features()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ClipLabeler"
+    },
+    {
+      "id": "ClipLabeler::_pool_masked_features",
+      "label": "_pool_masked_features()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ClipLabeler"
+    },
+    {
+      "id": "ClipLabeler::_expand_bbox",
+      "label": "_expand_bbox()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of ClipLabeler"
+    },
+    {
+      "id": "ClipLabeler::label_mask",
+      "label": "label_mask()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of ClipLabeler"
+    },
+    {
+      "id": "ClipLabeler::label_clusters",
+      "label": "label_clusters()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of ClipLabeler"
+    },
+    {
+      "id": "ClipLabeler::label_all_images",
+      "label": "label_all_images()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of ClipLabeler"
+    },
+    {
+      "id": "FeatureNormalizer",
+      "label": "FeatureNormalizer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\normalizers\\feature_normalizer.py"
+    },
+    {
+      "id": "FeatureNormalizer::_get_scaler",
+      "label": "_get_scaler()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of FeatureNormalizer"
+    },
+    {
+      "id": "FeatureNormalizer::fit_transform",
+      "label": "fit_transform()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of FeatureNormalizer"
+    },
+    {
+      "id": "KValueOptimizer",
+      "label": "KValueOptimizer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\optimizers\\k_optimizer.py"
+    },
+    {
+      "id": "KValueOptimizer::find_best_k",
+      "label": "find_best_k()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of KValueOptimizer"
+    },
+    {
+      "id": "KValueOptimizer::_plot_scores",
+      "label": "_plot_scores()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of KValueOptimizer"
+    },
+    {
+      "id": "Pipeline",
+      "label": "Pipeline",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\pipeline.py"
+    },
+    {
+      "id": "Pipeline::_init_feature_models",
+      "label": "_init_feature_models()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of Pipeline"
+    },
+    {
+      "id": "Pipeline::_preprocess_features",
+      "label": "_preprocess_features()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of Pipeline"
+    },
+    {
+      "id": "Pipeline::_create_fused_features",
+      "label": "_create_fused_features()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of Pipeline"
+    },
+    {
+      "id": "Pipeline::_run_clustering_per_image",
+      "label": "_run_clustering_per_image()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of Pipeline"
+    },
+    {
+      "id": "Pipeline::_run_analysis_pipeline",
+      "label": "_run_analysis_pipeline()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of Pipeline"
+    },
+    {
+      "id": "Pipeline::run",
+      "label": "run()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Pipeline"
+    },
+    {
+      "id": "IdentityResolver",
+      "label": "IdentityResolver",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\postprocessors\\identify_resolver.py"
+    },
+    {
+      "id": "IdentityResolver::_get_mask",
+      "label": "_get_mask()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_get_label",
+      "label": "_get_label()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_get_base_score",
+      "label": "_get_base_score()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_bbox_from_mask",
+      "label": "_bbox_from_mask()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_iou",
+      "label": "_iou()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_border_touch_fraction",
+      "label": "_border_touch_fraction()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_area_fraction",
+      "label": "_area_fraction()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_strip_like",
+      "label": "_strip_like()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_adjust_score",
+      "label": "_adjust_score()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::_nms",
+      "label": "_nms()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "IdentityResolver::run",
+      "label": "run()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of IdentityResolver"
+    },
+    {
+      "id": "Preprocessor",
+      "label": "Preprocessor",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\preprocessors\\preprocessor.py"
+    },
+    {
+      "id": "Preprocessor::process",
+      "label": "process()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Preprocessor"
+    },
+    {
+      "id": "ImageLoader",
+      "label": "ImageLoader",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\utils\\image_loader.py"
+    },
+    {
+      "id": "ImageLoader::get_image_paths",
+      "label": "get_image_paths()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of ImageLoader"
+    },
+    {
+      "id": "ImageLoader::load_single_image",
+      "label": "load_single_image()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of ImageLoader"
+    },
+    {
+      "id": "Visualizer",
+      "label": "Visualizer",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\utils\\visualizer.py"
+    },
+    {
+      "id": "Visualizer::get_cluster_colors",
+      "label": "get_cluster_colors()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Visualizer"
+    },
+    {
+      "id": "Visualizer::plot_heatmap",
+      "label": "plot_heatmap()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Visualizer"
+    },
+    {
+      "id": "Visualizer::plot_silhouette",
+      "label": "plot_silhouette()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Visualizer"
+    },
+    {
+      "id": "Visualizer::plot_final_segmentation",
+      "label": "plot_final_segmentation()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Visualizer"
+    },
+    {
+      "id": "Visualizer::plot_cluster_scatter",
+      "label": "plot_cluster_scatter()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Visualizer"
+    },
+    {
+      "id": "Visualizer::plot_validated_masks_debug",
+      "label": "plot_validated_masks_debug()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Visualizer"
+    },
+    {
+      "id": "FinalValidator",
+      "label": "FinalValidator",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\validators\\final_validator.py"
+    },
+    {
+      "id": "FinalValidator::_calculate_iou",
+      "label": "_calculate_iou()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of FinalValidator"
+    },
+    {
+      "id": "FinalValidator::_find_best_match",
+      "label": "_find_best_match()",
+      "group": "private_method",
+      "shape": "ellipse",
+      "title": "Method of FinalValidator"
+    },
+    {
+      "id": "FinalValidator::validate_and_label",
+      "label": "validate_and_label()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of FinalValidator"
+    },
+    {
+      "id": "Sam2Wrapper",
+      "label": "Sam2Wrapper",
+      "group": "class",
+      "shape": "box",
+      "file": "src\\wrappers\\sam2_wrapper.py"
+    },
+    {
+      "id": "Sam2Wrapper::generate_masks",
+      "label": "generate_masks()",
+      "group": "public_method",
+      "shape": "ellipse",
+      "title": "Method of Sam2Wrapper"
+    },
+    {
+      "id": "run.py",
+      "label": "run.py",
+      "group": "script",
+      "shape": "box",
+      "file": "run.py"
+    },
+    {
+      "id": "tuner.py",
+      "label": "tuner.py",
+      "group": "script",
+      "shape": "box",
+      "file": "experiments/tuner.py"
+    },
+    {
+      "id": "create_clusterer",
+      "label": "create_clusterer()",
+      "group": "function",
+      "shape": "diamond",
+      "file": "src/clusterers/utils_clusterer.py"
+    },
+    {
+      "id": "get_normalizer",
+      "label": "get_normalizer()",
+      "group": "function",
+      "shape": "diamond",
+      "file": "src/normalizers/feature_normalizer.py"
+    }
+  ],
+  "edges": [
+    {
+      "source": "PerformanceAnalyzer",
+      "target": "PerformanceAnalyzer::_calculate_iou",
+      "label": "contains"
+    },
+    {
+      "source": "PerformanceAnalyzer",
+      "target": "PerformanceAnalyzer::_find_best_gt_match",
+      "label": "contains"
+    },
+    {
+      "source": "PerformanceAnalyzer",
+      "target": "PerformanceAnalyzer::run_evaluation",
+      "label": "contains"
+    },
+    {
+      "source": "PerformanceAnalyzer",
+      "target": "PerformanceAnalyzer::get_summary",
+      "label": "contains"
+    },
+    {
+      "source": "TuningAnalyzer",
+      "target": "TuningAnalyzer::_calculate_segment_penalty",
+      "label": "contains"
+    },
+    {
+      "source": "TuningAnalyzer",
+      "target": "TuningAnalyzer::calculate_all_metrics",
+      "label": "contains"
+    },
+    {
+      "source": "BaseClusterer",
+      "target": "ABC",
+      "label": "inherits"
+    },
+    {
+      "source": "BaseClusterer",
+      "target": "BaseClusterer::fit_predict",
+      "label": "contains"
+    },
+    {
+      "source": "GraphClusterer",
+      "target": "BaseClusterer",
+      "label": "inherits"
+    },
+    {
+      "source": "GraphClusterer",
+      "target": "GraphClusterer::_calculate_dynamic_neighbors",
+      "label": "contains"
+    },
+    {
+      "source": "GraphClusterer",
+      "target": "GraphClusterer::fit_predict",
+      "label": "contains"
+    },
+    {
+      "source": "KMeansClusterer",
+      "target": "BaseClusterer",
+      "label": "inherits"
+    },
+    {
+      "source": "KMeansClusterer",
+      "target": "KMeansClusterer::fit_predict",
+      "label": "contains"
+    },
+    {
+      "source": "SpectralClusterer",
+      "target": "BaseClusterer",
+      "label": "inherits"
+    },
+    {
+      "source": "SpectralClusterer",
+      "target": "SpectralClusterer::fit_predict",
+      "label": "contains"
+    },
+    {
+      "source": "ClusterCountEstimator",
+      "target": "ClusterCountEstimator::_calculate_iou",
+      "label": "contains"
+    },
+    {
+      "source": "ClusterCountEstimator",
+      "target": "ClusterCountEstimator::_apply_nms",
+      "label": "contains"
+    },
+    {
+      "source": "ClusterCountEstimator",
+      "target": "ClusterCountEstimator::_filter_and_process_masks",
+      "label": "contains"
+    },
+    {
+      "source": "ClusterCountEstimator",
+      "target": "ClusterCountEstimator::estimate_k_with_heuristics",
+      "label": "contains"
+    },
+    {
+      "source": "ClusterCountEstimator",
+      "target": "Sam2Wrapper",
+      "label": "uses"
+    },
+    {
+      "source": "BaseExtractor",
+      "target": "BaseExtractor::_load_images_and_prepare_batch",
+      "label": "contains"
+    },
+    {
+      "source": "BaseExtractor",
+      "target": "BaseExtractor::extract",
+      "label": "contains"
+    },
+    {
+      "source": "BaseExtractor",
+      "target": "ImageLoader",
+      "label": "uses"
+    },
+    {
+      "source": "CLIPExtractor",
+      "target": "BaseExtractor",
+      "label": "inherits"
+    },
+    {
+      "source": "CLIPExtractor",
+      "target": "CLIPExtractor::_load_model",
+      "label": "contains"
+    },
+    {
+      "source": "CLIPExtractor",
+      "target": "CLIPExtractor::_get_target_module",
+      "label": "contains"
+    },
+    {
+      "source": "CLIPExtractor",
+      "target": "CLIPExtractor::_hook_fn",
+      "label": "contains"
+    },
+    {
+      "source": "CLIPExtractor",
+      "target": "CLIPExtractor::_register_hook",
+      "label": "contains"
+    },
+    {
+      "source": "CLIPExtractor",
+      "target": "CLIPExtractor::extract",
+      "label": "contains"
+    },
+    {
+      "source": "CLIPExtractor",
+      "target": "CLIPExtractor::_load_images_as_pil",
+      "label": "contains"
+    },
+    {
+      "source": "DINOv2Extractor",
+      "target": "BaseExtractor",
+      "label": "inherits"
+    },
+    {
+      "source": "DINOv2Extractor",
+      "target": "DINOv2Extractor::_get_features_hook",
+      "label": "contains"
+    },
+    {
+      "source": "DINOv2Extractor",
+      "target": "DINOv2Extractor::_register_hook",
+      "label": "contains"
+    },
+    {
+      "source": "DINOv2Extractor",
+      "target": "DINOv2Extractor::extract",
+      "label": "contains"
+    },
+    {
+      "source": "ResNetExtractor",
+      "target": "BaseExtractor",
+      "label": "inherits"
+    },
+    {
+      "source": "ResNetExtractor",
+      "target": "ResNetExtractor::_load_model",
+      "label": "contains"
+    },
+    {
+      "source": "ResNetExtractor",
+      "target": "ResNetExtractor::_get_target_module",
+      "label": "contains"
+    },
+    {
+      "source": "ResNetExtractor",
+      "target": "ResNetExtractor::_register_hook",
+      "label": "contains"
+    },
+    {
+      "source": "ResNetExtractor",
+      "target": "ResNetExtractor::extract",
+      "label": "contains"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "ClipLabeler::_load_and_encode_words",
+      "label": "contains"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "ClipLabeler::_aggregate_features",
+      "label": "contains"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "ClipLabeler::_pool_masked_features",
+      "label": "contains"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "ClipLabeler::_expand_bbox",
+      "label": "contains"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "ClipLabeler::label_mask",
+      "label": "contains"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "ClipLabeler::label_clusters",
+      "label": "contains"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "ClipLabeler::label_all_images",
+      "label": "contains"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "ClipLabeler",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "FeatureNormalizer",
+      "target": "FeatureNormalizer::_get_scaler",
+      "label": "contains"
+    },
+    {
+      "source": "FeatureNormalizer",
+      "target": "FeatureNormalizer::fit_transform",
+      "label": "contains"
+    },
+    {
+      "source": "KValueOptimizer",
+      "target": "KValueOptimizer::find_best_k",
+      "label": "contains"
+    },
+    {
+      "source": "KValueOptimizer",
+      "target": "KValueOptimizer::_plot_scores",
+      "label": "contains"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Pipeline::_init_feature_models",
+      "label": "contains"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Pipeline::_preprocess_features",
+      "label": "contains"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Pipeline::_create_fused_features",
+      "label": "contains"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Pipeline::_run_clustering_per_image",
+      "label": "contains"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Pipeline::_run_analysis_pipeline",
+      "label": "contains"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Pipeline::run",
+      "label": "contains"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Preprocessor",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "ClusterCountEstimator",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "FinalValidator",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "ImageLoader",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "Visualizer",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "bool",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "bool",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "bool",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "IdentityResolver",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "ResNetExtractor",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "DINOv2Extractor",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "CLIPExtractor",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "ClipLabeler",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_get_mask",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_get_label",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_get_base_score",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_bbox_from_mask",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_iou",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_border_touch_fraction",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_area_fraction",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_strip_like",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_adjust_score",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::_nms",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "IdentityResolver::run",
+      "label": "contains"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "bool",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "bool",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "IdentityResolver",
+      "target": "int",
+      "label": "uses"
+    },
+    {
+      "source": "Preprocessor",
+      "target": "Preprocessor::process",
+      "label": "contains"
+    },
+    {
+      "source": "ImageLoader",
+      "target": "ImageLoader::get_image_paths",
+      "label": "contains"
+    },
+    {
+      "source": "ImageLoader",
+      "target": "ImageLoader::load_single_image",
+      "label": "contains"
+    },
+    {
+      "source": "Visualizer",
+      "target": "Visualizer::get_cluster_colors",
+      "label": "contains"
+    },
+    {
+      "source": "Visualizer",
+      "target": "Visualizer::plot_heatmap",
+      "label": "contains"
+    },
+    {
+      "source": "Visualizer",
+      "target": "Visualizer::plot_silhouette",
+      "label": "contains"
+    },
+    {
+      "source": "Visualizer",
+      "target": "Visualizer::plot_final_segmentation",
+      "label": "contains"
+    },
+    {
+      "source": "Visualizer",
+      "target": "Visualizer::plot_cluster_scatter",
+      "label": "contains"
+    },
+    {
+      "source": "Visualizer",
+      "target": "Visualizer::plot_validated_masks_debug",
+      "label": "contains"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "FinalValidator::_calculate_iou",
+      "label": "contains"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "FinalValidator::_find_best_match",
+      "label": "contains"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "FinalValidator::validate_and_label",
+      "label": "contains"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "float",
+      "label": "uses"
+    },
+    {
+      "source": "FinalValidator",
+      "target": "str",
+      "label": "uses"
+    },
+    {
+      "source": "Sam2Wrapper",
+      "target": "Sam2Wrapper::generate_masks",
+      "label": "contains"
+    },
+    {
+      "source": "Sam2Wrapper",
+      "target": "SAM2AutomaticMaskGenerator",
+      "label": "uses"
+    },
+    {
+      "source": "Pipeline",
+      "target": "create_clusterer",
+      "label": "uses"
+    },
+    {
+      "source": "create_clusterer",
+      "target": "KMeansClusterer",
+      "label": "calls"
+    },
+    {
+      "source": "create_clusterer",
+      "target": "GraphClusterer",
+      "label": "calls"
+    },
+    {
+      "source": "Pipeline",
+      "target": "get_normalizer",
+      "label": "uses"
+    },
+    {
+      "source": "get_normalizer",
+      "target": "FeatureNormalizer",
+      "label": "calls"
+    },
+    {
+      "source": "Pipeline",
+      "target": "KValueOptimizer",
+      "label": "uses"
+    },
+    {
+      "source": "run.py",
+      "target": "PerformanceAnalyzer",
+      "label": "uses"
+    },
+    {
+      "source": "run.py",
+      "target": "Pipeline",
+      "label": "uses"
+    },
+    {
+      "source": "tuner.py",
+      "target": "Pipeline",
+      "label": "uses"
+    }
+  ]
+}

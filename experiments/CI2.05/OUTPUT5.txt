@@ -1,0 +1,222 @@
+2026-02-06 19:38:36,294 - INFO - Initializing architectural components...
+2026-02-06 19:38:36,295 - INFO - Preprocessor initialized with config: {'use_clahe': False, 'use_gaussian_blur': False, 'use_grayscale': False}
+2026-02-06 19:38:36,297 - INFO - Initializing SAM 2 Wrapper by loading 'facebook/sam2-hiera-large' from Hugging Face Hub...
+2026-02-06 19:38:36,552 - INFO - HTTP Request: HEAD https://huggingface.co/facebook/sam2-hiera-large/resolve/main/sam2_hiera_large.pt "HTTP/1.1 302 Found"
+2026-02-06 19:38:38,625 - INFO - Loaded checkpoint sucessfully
+2026-02-06 19:38:38,922 - INFO - SAM 2 Wrapper Initialized successfully from Hugging Face.
+2026-02-06 19:38:38,923 - INFO - FinalValidator initialized with weights: {'clip_confidence': 0.6, 'dino_iou': 0.4, 'resnet_iou': 0.0}
+2026-02-06 19:38:38,939 - INFO - --- Starting Main Pipeline Run ---
+2026-02-06 19:38:38,941 - INFO - --- Phase 2: K-Value Estimation and SAM Mask Generation (SAM2-first) ---
+2026-02-06 19:38:38,941 - INFO - Processing k-values and masks for image 000000002149.jpg...
+2026-02-06 19:38:38,950 - WARNING - File k_estimates_8352795db8abb01f4214471821bc4719_-2148158790070376059.pkl not found. Will regenerate.
+2026-02-06 19:38:38,951 - INFO - SAM 2 Wrapper: Generating masks...
+2026-02-06 19:38:38,951 - INFO - For numpy array image, we assume (HxWxC) format
+2026-02-06 19:38:38,967 - INFO - Computing image embeddings for the provided image...
+2026-02-06 19:38:39,468 - INFO - Image embeddings computed.
+/usr/local/lib/python3.12/dist-packages/sam2/sam2_image_predictor.py:431: UserWarning: /usr/local/lib/python3.12/dist-packages/sam2/_C.so: undefined symbol: _ZNK3c1010TensorImpl15incref_pyobjectEv
+
+Skipping the post-processing step due to the error above. You can still use SAM 2 and it's OK to ignore the error above, although some post-processing functionality may be limited (which doesn't affect the results in most cases; see https://github.com/facebookresearch/sam2/blob/main/INSTALL.md).
+  masks = self._transforms.postprocess_masks(
+2026-02-06 19:38:45,094 - INFO - NMS applied. Kept 14 of 18 masks.
+2026-02-06 19:38:45,095 - INFO - Heuristics estimated: k_semantic=10, k_structural=7
+2026-02-06 19:38:45,109 - INFO - [OK] Saved k_estimates_8352795db8abb01f4214471821bc4719_-2148158790070376059.pkl
+2026-02-06 19:38:45,110 - INFO - Processing k-values and masks for image 000000014007.jpg...
+2026-02-06 19:38:45,119 - WARNING - File k_estimates_a77934f62308e3a57de97621e9d9e3b3_-2148158790070376059.pkl not found. Will regenerate.
+2026-02-06 19:38:45,119 - INFO - SAM 2 Wrapper: Generating masks...
+2026-02-06 19:38:45,120 - INFO - For numpy array image, we assume (HxWxC) format
+2026-02-06 19:38:45,130 - INFO - Computing image embeddings for the provided image...
+2026-02-06 19:38:45,585 - INFO - Image embeddings computed.
+2026-02-06 19:38:51,689 - INFO - NMS applied. Kept 24 of 28 masks.
+2026-02-06 19:38:51,690 - INFO - Heuristics estimated: k_semantic=16, k_structural=9
+2026-02-06 19:38:51,713 - INFO - [OK] Saved k_estimates_a77934f62308e3a57de97621e9d9e3b3_-2148158790070376059.pkl
+2026-02-06 19:38:51,714 - INFO - Initial semantic k-values (heuristic): [10, 16]
+2026-02-06 19:38:51,715 - INFO - Initial structural k-values (heuristic): []
+2026-02-06 19:38:52,324 - INFO - Loading DINOv2 model: dinov2_vitb14...
+Using cache found in /root/.cache/torch/hub/facebookresearch_dinov2_main
+2026-02-06 19:38:53,054 - INFO - using MLP layer as FFN
+2026-02-06 19:38:54,284 - INFO - Extraction hook registered on layer: blocks.8
+2026-02-06 19:38:54,286 - INFO - Loading CLIP model: ViT-B/32...
+2026-02-06 19:38:57,762 - INFO - Hook successfully registered on layer: visual.transformer.resblocks.11
+2026-02-06 19:39:01,271 - INFO - Encoding 80 words with 11 templates each...
+2026-02-06 19:39:03,429 - INFO - --- Phase 1: Global Feature Extraction ---
+2026-02-06 19:39:03,430 - WARNING - File dino_features_dinov2_vitb14_blocks-8.pkl not found. Will regenerate.
+2026-02-06 19:39:03,454 - INFO - Starting DINOv2 feature extraction from layer 'blocks.8'...
+2026-02-06 19:39:03,492 - INFO - [OK] Saved dino_features_dinov2_vitb14_blocks-8.pkl
+2026-02-06 19:39:03,493 - INFO - Starting optimal k search in range (2, 8) using Silhouette Score...
+2026-02-06 19:39:03,493 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,494 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,494 - INFO - Applying Normalized Cut with n_clusters=2, n_neighbors=30...
+2026-02-06 19:39:03,536 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,537 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,538 - INFO - Applying Normalized Cut with n_clusters=3, n_neighbors=30...
+2026-02-06 19:39:03,567 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,568 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,568 - INFO - Applying Normalized Cut with n_clusters=4, n_neighbors=30...
+2026-02-06 19:39:03,597 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,598 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,599 - INFO - Applying Normalized Cut with n_clusters=5, n_neighbors=30...
+2026-02-06 19:39:03,621 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,622 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,622 - INFO - Applying Normalized Cut with n_clusters=6, n_neighbors=30...
+2026-02-06 19:39:03,678 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,678 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,679 - INFO - Applying Normalized Cut with n_clusters=7, n_neighbors=30...
+2026-02-06 19:39:03,713 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,714 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,715 - INFO - Applying Normalized Cut with n_clusters=8, n_neighbors=30...
+2026-02-06 19:39:03,767 - INFO - Search complete. Best k = 6 with Silhouette Score = 0.0318
+2026-02-06 19:39:03,925 - INFO - k-optimization plot saved to: ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/dino_k_opt_000000002149.jpg.png
+2026-02-06 19:39:03,926 - INFO - Starting optimal k search in range (2, 8) using Silhouette Score...
+2026-02-06 19:39:03,926 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,927 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,927 - INFO - Applying Normalized Cut with n_clusters=2, n_neighbors=30...
+2026-02-06 19:39:03,962 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,963 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,963 - INFO - Applying Normalized Cut with n_clusters=3, n_neighbors=30...
+2026-02-06 19:39:03,987 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:03,988 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:03,988 - INFO - Applying Normalized Cut with n_clusters=4, n_neighbors=30...
+2026-02-06 19:39:04,025 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:04,025 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:04,026 - INFO - Applying Normalized Cut with n_clusters=5, n_neighbors=30...
+2026-02-06 19:39:04,048 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:04,049 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:04,049 - INFO - Applying Normalized Cut with n_clusters=6, n_neighbors=30...
+2026-02-06 19:39:04,079 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:04,080 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:04,080 - INFO - Applying Normalized Cut with n_clusters=7, n_neighbors=30...
+2026-02-06 19:39:04,119 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:04,123 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:04,124 - INFO - Applying Normalized Cut with n_clusters=8, n_neighbors=30...
+2026-02-06 19:39:04,154 - INFO - Search complete. Best k = 8 with Silhouette Score = 0.0361
+2026-02-06 19:39:04,326 - INFO - k-optimization plot saved to: ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/dino_k_opt_000000014007.jpg.png
+2026-02-06 19:39:04,326 - INFO - Determined semantic k-values: [6, 8]
+2026-02-06 19:39:04,327 - INFO - Determined structural k-values: []
+2026-02-06 19:39:04,327 - INFO - --- Phase 3: Multi-View Analysis ---
+2026-02-06 19:39:04,328 - INFO - --- Running Analysis Pipeline: dino_semantic ---
+2026-02-06 19:39:04,329 - INFO - Clustering image 1/2 (000000002149.jpg) with k=6 using method 'graph'...
+2026-02-06 19:39:04,329 - INFO - FeatureNormalizer initialized with method: root-norm
+2026-02-06 19:39:06,390 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:06,391 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:06,391 - INFO - Applying Normalized Cut with n_clusters=6, n_neighbors=30...
+2026-02-06 19:39:06,407 - INFO - Visualizing silhouette score for 000000002149.jpg...
+2026-02-06 19:39:06,635 - INFO - Saved plot to drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/graph/silhouette_dino_semantic_img0.png
+2026-02-06 19:39:06,636 - INFO - Visualizing 2D cluster scatter plot for 000000002149.jpg...
+2026-02-06 19:39:06,636 - INFO - Generating 2D scatter plot of clusters...
+2026-02-06 19:39:07,022 - INFO - Saved scatter plot to drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/graph/scatter_2d_dino_semantic_img0.png
+2026-02-06 19:39:07,023 - INFO - Visualizing cluster heatmap for 000000002149.jpg...
+2026-02-06 19:39:07,200 - INFO - Saved plot to drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/graph/heatmap_dino_semantic_img0_img0.png
+2026-02-06 19:39:07,200 - INFO - Clustering image 2/2 (000000014007.jpg) with k=8 using method 'graph'...
+2026-02-06 19:39:07,201 - INFO - FeatureNormalizer initialized with method: root-norm
+2026-02-06 19:39:09,285 - INFO - Creating clusterer of type: graph
+2026-02-06 19:39:09,285 - INFO - Using fixed n_neighbors provided in config: 30
+2026-02-06 19:39:09,286 - INFO - Applying Normalized Cut with n_clusters=8, n_neighbors=30...
+2026-02-06 19:39:09,310 - INFO - Visualizing silhouette score for 000000014007.jpg...
+2026-02-06 19:39:09,540 - INFO - Saved plot to drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/graph/silhouette_dino_semantic_img1.png
+2026-02-06 19:39:09,541 - INFO - Visualizing 2D cluster scatter plot for 000000014007.jpg...
+2026-02-06 19:39:09,542 - INFO - Generating 2D scatter plot of clusters...
+2026-02-06 19:39:09,947 - INFO - Saved scatter plot to drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/graph/scatter_2d_dino_semantic_img1.png
+2026-02-06 19:39:09,948 - INFO - Visualizing cluster heatmap for 000000014007.jpg...
+2026-02-06 19:39:10,138 - INFO - Saved plot to drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/graph/heatmap_dino_semantic_img1_img1.png
+2026-02-06 19:39:10,139 - INFO - Running CLIP labeling for dino_semantic clusters...
+2026-02-06 19:39:10,140 - WARNING - File clip_features_for_dino_semantic_ViT-B-32_transformer.resblocks.11.pkl not found. Will regenerate.
+2026-02-06 19:39:10,141 - INFO - Starting CLIP feature extraction from layer 'transformer.resblocks.11'...
+2026-02-06 19:39:10,176 - INFO - Extraction complete. Final features shape: (2, 512, 7, 7)
+2026-02-06 19:39:10,181 - INFO - [OK] Saved clip_features_for_dino_semantic_ViT-B-32_transformer.resblocks.11.pkl
+2026-02-06 19:39:10,182 - INFO - CLIP features saved to: ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/features_cache/clip_features_for_dino_semantic_ViT-B-32_transformer.resblocks.11.pkl
+2026-02-06 19:39:10,184 - INFO - Cluster 0 → 'bus' (sim: 0.244)
+2026-02-06 19:39:10,186 - INFO - Cluster 1 → 'apple' (sim: 0.279)
+2026-02-06 19:39:10,188 - INFO - Cluster 2 → 'apple' (sim: 0.257)
+2026-02-06 19:39:10,189 - INFO - Cluster 3 → 'apple' (sim: 0.287)
+2026-02-06 19:39:10,191 - INFO - Cluster 5 → 'bench' (sim: 0.218)
+2026-02-06 19:39:10,193 - INFO - Cluster 0 → 'refrigerator' (sim: 0.261)
+2026-02-06 19:39:10,195 - INFO - Cluster 1 → 'cat' (sim: 0.276)
+2026-02-06 19:39:10,196 - INFO - Cluster 2 → 'refrigerator' (sim: 0.275)
+2026-02-06 19:39:10,198 - INFO - Cluster 3 → 'tie' (sim: 0.269)
+2026-02-06 19:39:10,200 - INFO - Cluster 4 → 'refrigerator' (sim: 0.265)
+2026-02-06 19:39:10,201 - INFO - Cluster 5 → 'couch' (sim: 0.237)
+2026-02-06 19:39:10,203 - INFO - Cluster 6 → 'cat' (sim: 0.277)
+2026-02-06 19:39:10,205 - INFO - Cluster 7 → 'refrigerator' (sim: 0.290)
+2026-02-06 19:39:10,206 - INFO - --- Phase 4 & 5: Running Final Validation and Output ---
+2026-02-06 19:39:10,207 - WARNING - File clip_features_for_validation_ViT-B-32_transformer.resblocks.11.pkl not found. Will regenerate.
+2026-02-06 19:39:10,207 - INFO - Starting CLIP feature extraction from layer 'transformer.resblocks.11'...
+2026-02-06 19:39:10,242 - INFO - Extraction complete. Final features shape: (2, 512, 7, 7)
+2026-02-06 19:39:10,248 - INFO - [OK] Saved clip_features_for_validation_ViT-B-32_transformer.resblocks.11.pkl
+2026-02-06 19:39:10,248 - INFO - CLIP features saved to: ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/features_cache/clip_features_for_validation_ViT-B-32_transformer.resblocks.11.pkl
+2026-02-06 19:39:10,249 - INFO - Validating masks for 000000002149.jpg...
+2026-02-06 19:39:10,262 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.111 | resnet_id=-1 resnet_iou=0.000 | clip=0.266 | final=0.204 | sem_ok=False str_ok=True | label=baseball bat
+2026-02-06 19:39:10,263 - INFO - [CLIP_TOP] label=baseball bat conf=0.266 margin=0.007495224475860596 top=[('baseball bat', 0.266), ('tennis racket', 0.259), ('bus', 0.258), ('carrot', 0.255), ('sandwich', 0.254)]
+2026-02-06 19:39:10,270 - INFO - [VAL_DEBUG] dino_id=5 dino_iou=0.241 | resnet_id=-1 resnet_iou=0.000 | clip=0.249 | final=0.246 | sem_ok=False str_ok=True | label=baseball bat
+2026-02-06 19:39:10,271 - INFO - [CLIP_TOP] label=baseball bat conf=0.249 margin=0.003950208425521851 top=[('baseball bat', 0.249), ('bench', 0.245), ('baseball glove', 0.242), ('bus', 0.242), ('microwave', 0.241)]
+2026-02-06 19:39:10,278 - INFO - [VAL_DEBUG] dino_id=0 dino_iou=0.286 | resnet_id=-1 resnet_iou=0.000 | clip=0.262 | final=0.271 | sem_ok=True str_ok=True | label=baseball bat
+2026-02-06 19:39:10,279 - INFO - [CLIP_TOP] label=baseball bat conf=0.262 margin=0.0018854141235351562 top=[('baseball bat', 0.262), ('bus', 0.26), ('tennis racket', 0.255), ('carrot', 0.254), ('truck', 0.251)]
+2026-02-06 19:39:10,287 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.078 | resnet_id=-1 resnet_iou=0.000 | clip=0.257 | final=0.185 | sem_ok=False str_ok=True | label=handbag
+2026-02-06 19:39:10,287 - INFO - [CLIP_TOP] label=handbag conf=0.257 margin=0.000783383846282959 top=[('handbag', 0.257), ('apple', 0.256), ('baseball glove', 0.248), ('refrigerator', 0.247), ('sandwich', 0.246)]
+2026-02-06 19:39:10,295 - INFO - [VAL_DEBUG] dino_id=2 dino_iou=0.081 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.032 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:10,303 - INFO - [VAL_DEBUG] dino_id=3 dino_iou=0.464 | resnet_id=-1 resnet_iou=0.000 | clip=0.227 | final=0.321 | sem_ok=True str_ok=True | label=bench
+2026-02-06 19:39:10,303 - INFO - [CLIP_TOP] label=bench conf=0.227 margin=0.0021388381719589233 top=[('bench', 0.227), ('bicycle', 0.224), ('bus', 0.223), ('baseball bat', 0.222), ('toaster', 0.221)]
+2026-02-06 19:39:10,312 - INFO - [VAL_DEBUG] dino_id=2 dino_iou=0.576 | resnet_id=-1 resnet_iou=0.000 | clip=0.287 | final=0.403 | sem_ok=True str_ok=True | label=apple
+2026-02-06 19:39:10,313 - INFO - [CLIP_TOP] label=apple conf=0.287 margin=0.008586317300796509 top=[('apple', 0.287), ('bench', 0.279), ('tennis racket', 0.278), ('baseball bat', 0.278), ('bus', 0.275)]
+2026-02-06 19:39:10,321 - INFO - [VAL_DEBUG] dino_id=5 dino_iou=0.077 | resnet_id=-1 resnet_iou=0.000 | clip=0.257 | final=0.185 | sem_ok=False str_ok=True | label=handbag
+2026-02-06 19:39:10,321 - INFO - [CLIP_TOP] label=handbag conf=0.257 margin=0.000783383846282959 top=[('handbag', 0.257), ('apple', 0.256), ('baseball glove', 0.248), ('refrigerator', 0.247), ('sandwich', 0.246)]
+2026-02-06 19:39:10,330 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.034 | resnet_id=-1 resnet_iou=0.000 | clip=0.238 | final=0.156 | sem_ok=False str_ok=True | label=bus
+2026-02-06 19:39:10,330 - INFO - [CLIP_TOP] label=bus conf=0.238 margin=0.0013030767440795898 top=[('bus', 0.238), ('banana', 0.237), ('truck', 0.234), ('book', 0.233), ('carrot', 0.229)]
+2026-02-06 19:39:10,339 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.079 | resnet_id=-1 resnet_iou=0.000 | clip=0.257 | final=0.185 | sem_ok=False str_ok=True | label=handbag
+2026-02-06 19:39:10,339 - INFO - [CLIP_TOP] label=handbag conf=0.257 margin=0.000783383846282959 top=[('handbag', 0.257), ('apple', 0.256), ('baseball glove', 0.248), ('refrigerator', 0.247), ('sandwich', 0.246)]
+2026-02-06 19:39:10,346 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.026 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.010 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:10,353 - INFO - [VAL_DEBUG] dino_id=3 dino_iou=0.027 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.011 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:10,360 - INFO - [VAL_DEBUG] dino_id=0 dino_iou=0.019 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.008 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:10,368 - INFO - [VAL_DEBUG] dino_id=4 dino_iou=0.029 | resnet_id=-1 resnet_iou=0.000 | clip=0.267 | final=0.172 | sem_ok=False str_ok=True | label=apple
+2026-02-06 19:39:10,368 - INFO - [CLIP_TOP] label=apple conf=0.267 margin=0.016467750072479248 top=[('apple', 0.267), ('bus', 0.251), ('handbag', 0.247), ('laptop', 0.247), ('refrigerator', 0.244)]
+2026-02-06 19:39:10,373 - INFO - [IdentityResolver] in=3 -> out=3 (top_k=3, nms_lbl=0.65, nms_g=0.85)
+2026-02-06 19:39:10,790 - INFO - Saved final segmentation plot to ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/final_result_000000002149.jpg.png
+2026-02-06 19:39:11,681 - INFO - Saved validated debug plot to ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/debug_validated_000000002149.jpg.png
+2026-02-06 19:39:11,682 - INFO - Validating masks for 000000014007.jpg...
+2026-02-06 19:39:11,703 - INFO - [VAL_DEBUG] dino_id=4 dino_iou=0.206 | resnet_id=-1 resnet_iou=0.000 | clip=0.265 | final=0.241 | sem_ok=False str_ok=True | label=refrigerator
+2026-02-06 19:39:11,704 - INFO - [CLIP_TOP] label=refrigerator conf=0.265 margin=0.006695866584777832 top=[('refrigerator', 0.265), ('cat', 0.258), ('microwave', 0.251), ('bird', 0.238), ('airplane', 0.237)]
+2026-02-06 19:39:11,715 - INFO - [VAL_DEBUG] dino_id=7 dino_iou=0.439 | resnet_id=-1 resnet_iou=0.000 | clip=0.304 | final=0.358 | sem_ok=True str_ok=True | label=refrigerator
+2026-02-06 19:39:11,715 - INFO - [CLIP_TOP] label=refrigerator conf=0.304 margin=0.021710336208343506 top=[('refrigerator', 0.304), ('microwave', 0.282), ('cat', 0.28), ('person', 0.279), ('tv', 0.279)]
+2026-02-06 19:39:11,725 - INFO - [VAL_DEBUG] dino_id=6 dino_iou=0.363 | resnet_id=-1 resnet_iou=0.000 | clip=0.278 | final=0.312 | sem_ok=True str_ok=True | label=tie
+2026-02-06 19:39:11,725 - INFO - [CLIP_TOP] label=tie conf=0.278 margin=0.0002862215042114258 top=[('tie', 0.278), ('cat', 0.278), ('person', 0.275), ('refrigerator', 0.275), ('dog', 0.273)]
+2026-02-06 19:39:11,735 - INFO - [VAL_DEBUG] dino_id=5 dino_iou=0.280 | resnet_id=-1 resnet_iou=0.000 | clip=0.261 | final=0.268 | sem_ok=True str_ok=True | label=refrigerator
+2026-02-06 19:39:11,735 - INFO - [CLIP_TOP] label=refrigerator conf=0.261 margin=0.01620161533355713 top=[('refrigerator', 0.261), ('toilet', 0.244), ('couch', 0.238), ('microwave', 0.238), ('bed', 0.237)]
+2026-02-06 19:39:11,746 - INFO - [VAL_DEBUG] dino_id=0 dino_iou=0.256 | resnet_id=-1 resnet_iou=0.000 | clip=0.280 | final=0.271 | sem_ok=True str_ok=True | label=refrigerator
+2026-02-06 19:39:11,747 - INFO - [CLIP_TOP] label=refrigerator conf=0.280 margin=0.007362931966781616 top=[('refrigerator', 0.28), ('microwave', 0.273), ('oven', 0.264), ('tv', 0.26), ('tie', 0.258)]
+2026-02-06 19:39:11,757 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.440 | resnet_id=-1 resnet_iou=0.000 | clip=0.251 | final=0.326 | sem_ok=True str_ok=True | label=cat
+2026-02-06 19:39:11,758 - INFO - [CLIP_TOP] label=cat conf=0.251 margin=0.009773224592208862 top=[('cat', 0.251), ('refrigerator', 0.241), ('car', 0.236), ('person', 0.236), ('oven', 0.233)]
+2026-02-06 19:39:11,771 - INFO - [VAL_DEBUG] dino_id=4 dino_iou=0.327 | resnet_id=-1 resnet_iou=0.000 | clip=0.265 | final=0.290 | sem_ok=True str_ok=True | label=refrigerator
+2026-02-06 19:39:11,771 - INFO - [CLIP_TOP] label=refrigerator conf=0.265 margin=0.006695866584777832 top=[('refrigerator', 0.265), ('cat', 0.258), ('microwave', 0.251), ('bird', 0.238), ('airplane', 0.237)]
+2026-02-06 19:39:11,784 - INFO - [VAL_DEBUG] dino_id=4 dino_iou=0.389 | resnet_id=-1 resnet_iou=0.000 | clip=0.310 | final=0.342 | sem_ok=True str_ok=True | label=refrigerator
+2026-02-06 19:39:11,784 - INFO - [CLIP_TOP] label=refrigerator conf=0.310 margin=0.03216013312339783 top=[('refrigerator', 0.31), ('microwave', 0.278), ('tv', 0.27), ('oven', 0.27), ('toilet', 0.269)]
+2026-02-06 19:39:11,796 - INFO - [VAL_DEBUG] dino_id=6 dino_iou=0.030 | resnet_id=-1 resnet_iou=0.000 | clip=0.282 | final=0.181 | sem_ok=False str_ok=True | label=refrigerator
+2026-02-06 19:39:11,797 - INFO - [CLIP_TOP] label=refrigerator conf=0.282 margin=0.027431875467300415 top=[('refrigerator', 0.282), ('tie', 0.254), ('microwave', 0.253), ('tv', 0.252), ('airplane', 0.252)]
+2026-02-06 19:39:11,808 - INFO - [VAL_DEBUG] dino_id=2 dino_iou=0.019 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.008 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,817 - INFO - [VAL_DEBUG] dino_id=3 dino_iou=0.044 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.018 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,826 - INFO - [VAL_DEBUG] dino_id=0 dino_iou=0.045 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.018 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,835 - INFO - [VAL_DEBUG] dino_id=0 dino_iou=0.073 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.029 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,846 - INFO - [VAL_DEBUG] dino_id=4 dino_iou=0.078 | resnet_id=-1 resnet_iou=0.000 | clip=0.310 | final=0.218 | sem_ok=False str_ok=True | label=refrigerator
+2026-02-06 19:39:11,846 - INFO - [CLIP_TOP] label=refrigerator conf=0.310 margin=0.03216013312339783 top=[('refrigerator', 0.31), ('microwave', 0.278), ('tv', 0.27), ('oven', 0.27), ('toilet', 0.269)]
+2026-02-06 19:39:11,857 - INFO - [VAL_DEBUG] dino_id=7 dino_iou=0.396 | resnet_id=-1 resnet_iou=0.000 | clip=0.304 | final=0.341 | sem_ok=True str_ok=True | label=refrigerator
+2026-02-06 19:39:11,857 - INFO - [CLIP_TOP] label=refrigerator conf=0.304 margin=0.021710336208343506 top=[('refrigerator', 0.304), ('microwave', 0.282), ('cat', 0.28), ('person', 0.279), ('tv', 0.279)]
+2026-02-06 19:39:11,866 - INFO - [VAL_DEBUG] dino_id=6 dino_iou=0.083 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.033 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,876 - INFO - [VAL_DEBUG] dino_id=6 dino_iou=0.016 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.006 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,888 - INFO - [VAL_DEBUG] dino_id=5 dino_iou=0.042 | resnet_id=-1 resnet_iou=0.000 | clip=0.280 | final=0.185 | sem_ok=False str_ok=True | label=refrigerator
+2026-02-06 19:39:11,888 - INFO - [CLIP_TOP] label=refrigerator conf=0.280 margin=0.007362931966781616 top=[('refrigerator', 0.28), ('microwave', 0.273), ('oven', 0.264), ('tv', 0.26), ('tie', 0.258)]
+2026-02-06 19:39:11,897 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.017 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.007 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,908 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.238 | resnet_id=-1 resnet_iou=0.000 | clip=0.251 | final=0.246 | sem_ok=False str_ok=True | label=cat
+2026-02-06 19:39:11,908 - INFO - [CLIP_TOP] label=cat conf=0.251 margin=0.009773224592208862 top=[('cat', 0.251), ('refrigerator', 0.241), ('car', 0.236), ('person', 0.236), ('oven', 0.233)]
+2026-02-06 19:39:11,917 - INFO - [VAL_DEBUG] dino_id=6 dino_iou=0.035 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.014 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,927 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.015 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.006 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,935 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.027 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.011 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,944 - INFO - [VAL_DEBUG] dino_id=1 dino_iou=0.018 | resnet_id=-1 resnet_iou=0.000 | clip=0.000 | final=0.007 | sem_ok=False str_ok=True | label=unknown
+2026-02-06 19:39:11,960 - INFO - [IdentityResolver] in=8 -> out=3 (top_k=3, nms_lbl=0.65, nms_g=0.85)
+2026-02-06 19:39:12,385 - INFO - Saved final segmentation plot to ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/final_result_000000014007.jpg.png
+2026-02-06 19:39:13,290 - INFO - Saved validated debug plot to ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33/plots/debug_validated_000000014007.jpg.png
+2026-02-06 19:39:13,291 - INFO - --- Main Pipeline Finished ---
+
+=== DIAGNOSTIC ===
+{'num_sam_masks': 14, 'k_semantic_used': 6, 'k_structural_used': 0, 'max_potential_dino_iou': 0.5756636070453982, 'max_potential_resnet_iou': 0.0}
+
+=== VALIDATED OUTPUT COUNTS ===
+000000002149.jpg -> 3
+000000014007.jpg -> 3

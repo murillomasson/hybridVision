@@ -1,0 +1,138 @@
+device: cuda
+dino_pipeline:
+  clustering:
+    clusterer:
+      method: graph
+      n_neighbors: 30
+    feature_processing:
+      normalizer:
+        method: root-norm
+      run_normalization: true
+      run_reduction: false
+    k_selection:
+      k_range:
+      - 2
+      - 8
+      method: silhouette
+    run_clip_labeling: true
+extractors:
+  clip:
+    layer_name: transformer.resblocks.11
+    model_name: ViT-B/32
+  dino_v2:
+    layer_name: blocks.8
+    model_name: dinov2_vitb14
+  resnet:
+    layer_name: layer2
+    model_name: resnet50
+fusion_pipeline:
+  clustering:
+    clusterer:
+      method: kmeans
+      n_neighbors: 40
+    feature_processing:
+      normalizer:
+        method: l2
+      run_normalization: true
+      run_reduction: false
+    k_selection:
+      k_range:
+      - 2
+      - 15
+      k_source: structural
+      method: heuristic
+    run_clip_labeling: true
+generate_plots: true
+heuristic_settings:
+  filter_params:
+    filter_min_area_perc: 0.002
+    nms_iou_threshold: 0.85
+    use_nms: true
+  generator_params:
+    min_mask_region_area: 50
+    points_per_side: 32
+    pred_iou_thresh: 0.75
+    stability_score_thresh: 0.85
+  k_heuristic_formulas:
+    max_k: 20
+    semantic_base: 2
+    semantic_scale_factor: 0.6
+    structural_multiplier: 2.0
+  sam_model: facebook/sam2-hiera-large
+image_dir: /content/drive/MyDrive/hybridvision/datasets/images/single_test/
+labeler:
+  aggregation_method: top_k_mean
+  aggregation_top_k_perc: 0.15
+  clip_confidence_mode: margin
+  clip_margin_temperature: 8.0
+  clip_min_margin: 0.01
+  context_crop:
+    enabled: true
+    mode: bbox_on_feature_map
+    scale: 1.4
+  prompt_template:
+  - a photo of a {}
+  - a picture of a {}
+  - a close-up of a {}
+  - a {} in the scene
+  - an image of a {}
+  - '{}'
+  - a cropped photo of a {}
+  - a cropped image of a {}
+  - a photo of the {} object
+  - the {} object in the image
+  - a photo of one {}
+  top_n_labels: 5
+  words_json_path: ./drive/MyDrive/hybridvision/datasets/words.json
+output_dir: ./drive/MyDrive/hybridvision/output/run_single_image_test_2026-02-06_19-38-33
+plotting_settings:
+  generate_per_image_plots: true
+  max_images_to_plot: 10
+postprocess:
+  identity_resolver:
+    area_penalty: 0.1
+    border_penalty: 0.15
+    border_touch_frac_thr: 0.4
+    enabled: true
+    max_area_frac: 0.8
+    nms_iou_thr_global: 0.85
+    nms_iou_thr_same_label: 0.65
+    strip_area_frac_max: 0.25
+    strip_aspect_thr: 7.0
+    strip_penalty: 0.12
+    top_k: 3
+    use_global_nms: true
+resnet_pipeline:
+  clustering:
+    clusterer:
+      method: graph
+      n_neighbors: 30
+    feature_processing:
+      normalizer:
+        method: root-norm
+      run_normalization: true
+      run_reduction: false
+    k_selection:
+      k_range:
+      - 3
+      - 15
+      method: heuristic
+    run_clip_labeling: false
+  image_preprocessing:
+    use_clahe: false
+    use_gaussian_blur: false
+    use_grayscale: false
+run_dino_pipeline: true
+run_fusion_pipeline: false
+run_resnet_pipeline: false
+validator_settings:
+  clip_ambiguous_label: unknown
+  clip_label_threshold: 0.28
+  clip_margin_threshold: 0.005
+  final_threshold: 0.26
+  semantic_threshold: 0.25
+  structural_threshold: 0.0
+  weights:
+    clip_confidence: 0.6
+    dino_iou: 0.4
+    resnet_iou: 0.0
