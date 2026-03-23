@@ -111,17 +111,24 @@ def render_system_overview(svg_path="docs/system_overview.svg"):
 
     st.markdown(f"""
         <div style="
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            margin-top:20px;
-            margin-bottom:10px;
-            width:100%;
+            width: 100%;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
         ">
             <div style="
-                width:100%;
-                max-width:100%;
+                width: 100%;
+                max-width: 100%;
             ">
+                <style>
+                    svg {{
+                        max-width: 100% !important;
+                        height: auto !important;
+                        display: block;
+                    }}
+                </style>
                 {svg_content}
             </div>
         </div>
@@ -268,6 +275,16 @@ def build_active_branches_label(row):
         active.append("Fusion")
     return " + ".join(active) if active else "None"
 
+def render_summary_cards(df, fields, title_field=None):
+    for _, row in df.iterrows():
+        title = row[title_field] if title_field and title_field in df.columns else "Item"
+
+        with st.expander(str(title), expanded=False):
+            for field in fields:
+                if field in df.columns:
+                    value = row[field]
+                    st.markdown(f"**{field.replace('_', ' ').title()}**: {value}")
+
 st.markdown("""
 <style>
     section[data-testid="stSidebar"] {
@@ -352,55 +369,48 @@ if app_mode == "🏛️ Architecture":
 
     legend_html = """
         <div style="
-        margin-top: 12px;
-        z-index: 1000;
-        background-color: rgba(12,15,20,0.84);
-        backdrop-filter: blur(6px);
-        border-radius: 12px;
-        padding: 10px 12px;
-        font-family: sans-serif;
-        font-size: 12px;
-        width: 155px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.28);
-        color: #d1d5db;
-        border: 1px solid rgba(255,255,255,0.06);
+            margin-top: 14px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 10px 14px;
+            background-color: rgba(12,15,20,0.84);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            font-size: 12px;
+            color: #d1d5db;
         ">
-        <style>
-            .legend-item { 
-                margin-bottom: 7px; 
-                display: flex; 
-                align-items: center; 
-                color: #d1d5db; 
-            }
-            .legend-color { 
-                width: 14px; 
-                height: 14px; 
-                border: 1px solid rgba(255,255,255,0.20); 
-                margin-right: 8px; 
-                flex-shrink: 0; 
-            }
-            .legend-line { 
-                width: 22px; 
-                height: 2px; 
-                margin-right: 8px; 
-                flex-shrink: 0; 
-            }
-        </style>
-
-        <b style="text-align:left; display:block; color:#f3f4f6; margin-bottom:8px;">Nodes</b>
-        <div class="legend-item"><div class="legend-color" style="background-color:#007bff;"></div>Class</div>
-        <div class="legend-item"><div class="legend-color" style="background-color:#6c757d; border-radius:50%;"></div>Public</div>
-        <div class="legend-item"><div class="legend-color" style="background-color:#adb5bd; border-radius:50%;"></div>Private</div>
-        <div class="legend-item"><div class="legend-color" style="background-color:#ffc107;"></div>Function</div>
-
-        <br>
-
-        <b style="text-align:left; display:block; color:#f3f4f6; margin-bottom:8px;">Edges</b>
-        <div class="legend-item"><div class="legend-line" style="background-color:#17a2b8;"></div>Inherits</div>
-        <div class="legend-item"><div class="legend-line" style="border-top:2px dashed #6c757d;"></div>Calls</div>
-        <div class="legend-item"><div class="legend-line" style="border-top:2px dashed #e5e7eb;"></div>Contains</div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <div style="width:12px; height:12px; background:#007bff; border:1px solid rgba(255,255,255,0.20);"></div>
+                <span>Class</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <div style="width:12px; height:12px; background:#6c757d; border-radius:50%; border:1px solid rgba(255,255,255,0.20);"></div>
+                <span>Public</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <div style="width:12px; height:12px; background:#adb5bd; border-radius:50%; border:1px solid rgba(255,255,255,0.20);"></div>
+                <span>Private</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <div style="width:12px; height:12px; background:#ffc107; border:1px solid rgba(255,255,255,0.20);"></div>
+                <span>Function</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <div style="width:22px; height:2px; background:#17a2b8;"></div>
+                <span>Inherits</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <div style="width:22px; border-top:2px dashed #fd7e14;"></div>
+                <span>Calls</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <div style="width:22px; border-top:2px dashed #e5e7eb;"></div>
+                <span>Contains</span>
+            </div>
         </div>
-    """    
+        """   
     
     architecture_data = load_json_data('docs/architecture_data.json')
     if architecture_data and 'nodes' in architecture_data and 'edges' in architecture_data:
@@ -450,8 +460,8 @@ if app_mode == "🏛️ Architecture":
                 'nodeSpacing': 200
             }
         )
-        agraph(nodes=agraph_nodes, edges=agraph_edges, config=config)
         st.markdown(legend_html, unsafe_allow_html=True)
+        agraph(nodes=agraph_nodes, edges=agraph_edges, config=config)
 
     else:
         st.warning("Architecture data (`docs/architecture_data.json`) not found. Please run 'python -m scripts/generate_architecture' to create it.")
@@ -573,7 +583,23 @@ if app_mode == "📈 Hyperparameter Optimization Experiments":
     
     with tab_data:
         st.header("Raw Data Explorer")
-        st.dataframe(df)
+
+        compact_raw_view = st.toggle("Compact mobile view", value=False, key="raw_compact_view")
+
+        if compact_raw_view:
+            preview_cols = st.multiselect(
+                "Columns to display",
+                options=df.columns.tolist(),
+                default=df.columns.tolist()[:5],
+                key="raw_preview_cols"
+            )
+            render_summary_cards(
+                df[preview_cols].reset_index(drop=True),
+                fields=preview_cols,
+                title_field=None
+            )
+        else:
+            st.dataframe(df, use_container_width=True)
 
 elif app_mode == "📖 Experiment Log":
     st.title("📖 Experiment Log")
@@ -627,18 +653,11 @@ elif app_mode == "🧪 Qualitative Single-Image Experiments":
             )
 
             default_cols = [
-                "experiment",
-                "active_branches",
-                "semantic_threshold",
-                "structural_threshold",
-                "final_threshold",
-                "w_clip",
-                "w_dino",
-                "w_resnet",
-                "sam_pred_iou",
-                "sam_stability",
-                "semantic_base",
-                "structural_multiplier"
+            "experiment",
+            "active_branches",
+            "final_threshold",
+            "w_clip",
+            "sam_pred_iou"
             ]
 
             selected_cols = st.multiselect(
@@ -648,7 +667,16 @@ elif app_mode == "🧪 Qualitative Single-Image Experiments":
                 key="ci_global_cols"
             )
 
-            st.dataframe(df_ci_summary[selected_cols], use_container_width=True)
+            compact_view = st.toggle("Compact mobile view", value=True, key="ci_compact_view")
+
+            if compact_view:
+                render_summary_cards(
+                    df_ci_summary[selected_cols],
+                    fields=[c for c in selected_cols if c != "experiment"],
+                    title_field="experiment"
+                )
+            else:
+                st.dataframe(df_ci_summary[selected_cols], use_container_width=True)
         else:
             st.info("No CI configuration summaries found.")
 
