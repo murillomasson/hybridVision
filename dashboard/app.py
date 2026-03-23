@@ -387,7 +387,7 @@ if app_mode == "🏠 Framework Overview":
         st.info("**Region Generation**: SAM-based proposal masks for candidate segments")
         st.info("**Feature Extraction**: DINOv2 and ResNet representations")
     with col2:
-        st.info("**Clustering**: pectral and K-means based grouping strategies")
+        st.info("**Clustering**: Espectral and K-means based grouping strategies")
         st.info("**Validation**: CLIP labeling and multi-view consistency analysis")
 
     st.markdown("""
