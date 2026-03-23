@@ -584,7 +584,7 @@ if app_mode == "📈 Hyperparameter Optimization Experiments":
     with tab_data:
         st.header("Raw Data Explorer")
 
-        compact_raw_view = st.toggle("Compact mobile view", value=False, key="raw_compact_view")
+        compact_raw_view = st.toggle("Compact mobile view", value=True, key="raw_compact_view")
 
         if compact_raw_view:
             preview_cols = st.multiselect(
