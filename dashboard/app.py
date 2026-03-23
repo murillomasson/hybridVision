@@ -78,6 +78,48 @@ def load_markdown(md_file_path='experiments/index.md'):
     except FileNotFoundError:
         return "The `experiments/index.md` file was not found."
 
+def render_experiment_summary_from_md(md_file_path='experiments/index.md'):
+    try:
+        with open(md_file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+    except FileNotFoundError:
+        st.warning("The `experiments/index.md` file was not found.")
+        return
+
+    if "## Experiment Summary" not in content:
+        st.markdown(content, unsafe_allow_html=True)
+        return
+
+    before, summary_part = content.split("## Experiment Summary", 1)
+
+    st.markdown(before, unsafe_allow_html=True)
+    st.markdown("## Experiment Summary")
+
+    lines = [line.rstrip() for line in summary_part.splitlines() if line.strip()]
+
+    table_lines = [line for line in lines if line.strip().startswith("|")]
+
+    if len(table_lines) < 3:
+        st.markdown(summary_part, unsafe_allow_html=True)
+        return
+
+    headers = [h.strip() for h in table_lines[0].strip("|").split("|")]
+    data_rows = table_lines[2:]
+
+    for row in data_rows:
+        values = [v.strip() for v in row.strip("|").split("|")]
+
+        if len(values) != len(headers):
+            continue
+
+        row_dict = dict(zip(headers, values))
+        title = row_dict.get("Section", "Experiment")
+
+        with st.expander(title, expanded=False):
+            for key, value in row_dict.items():
+                if key != "Section":
+                    st.markdown(f"**{key}:** {value}", unsafe_allow_html=True)
+
 def render_system_overview(svg_path="docs/system_overview.svg"):
     svg_content = load_svg(svg_path)
 
@@ -312,10 +354,30 @@ app_mode = st.sidebar.selectbox(
 
 if app_mode == "🏠 Framework Overview":
 
-    st.title("HybridVision")
     st.markdown("""
-        ### A modular framework for multimodal image segmentation
+        <div style="margin-bottom:0.6rem;">
 
+        <div style="
+        font-size:3rem;
+        font-weight:800;
+        letter-spacing:-0.02em;
+        line-height:1.1;
+        ">
+        HybridVision
+        </div>
+
+        <div style="
+        font-size:1.25rem;
+        font-weight:500;
+        color:#cbd5e1;
+        margin-top:0.25rem;
+        ">
+        A Modular Framework for Multimodal Image Segmentation
+        </div>
+
+        </div>
+        """, unsafe_allow_html=True)
+    st.markdown("""
         HybridVision combines semantic and structural deep representations with
         unsupervised clustering and validation strategies for experimental segmentation analysis.
         """)
@@ -609,8 +671,7 @@ elif app_mode == "📖 Experiment Log":
 
         It serves as a running record of how the framework evolved throughout development and testing.
         """)
-    log_content = load_markdown('experiments/index.md')
-    st.markdown(log_content, unsafe_allow_html=True)
+    render_experiment_summary_from_md('experiments/index.md')
 
 elif app_mode == "🧪 Qualitative Single-Image Experiments":
     st.title("🧪 Qualitative Single-Image Experiments")
