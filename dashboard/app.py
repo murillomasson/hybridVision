@@ -9,6 +9,14 @@ from streamlit_agraph import agraph, Node, Edge, Config
 import numpy as np
 import yaml
 
+
+st.set_page_config(
+    page_title="HybridVision Dashboard",
+    page_icon="🧠",
+    layout="wide"
+)
+
+
 st.markdown("""
 <style>
 
